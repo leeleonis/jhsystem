@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Web.Mvc;
 
 namespace jhsystem.Models
 {
@@ -40,14 +40,17 @@ namespace jhsystem.Models
     		/// Title
     		/// </summary>        
     	    [Display(Name = "Title", ResourceType = typeof(App_GlobalResources.Resource))]
+            [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(App_GlobalResources.Resource))]
             [MaxLength(50, ErrorMessageResourceName = "MaxLength", ErrorMessageResourceType = typeof(App_GlobalResources.Resource))]
     		public string  Title { get; set; }
-    
-    		    
-    		/// <summary>
-    		/// Body
-    		/// </summary>        
-    	    [Display(Name = "Body", ResourceType = typeof(App_GlobalResources.Resource))]
+
+
+            /// <summary>
+            /// Body
+            /// </summary>        
+            [AllowHtml]
+            [DataType(DataType.MultilineText)]
+            [Display(Name = "Body", ResourceType = typeof(App_GlobalResources.Resource))]
     		public string  Body { get; set; }
     
     		    
